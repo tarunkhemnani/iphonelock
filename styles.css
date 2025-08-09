@@ -1,0 +1,119 @@
+:root {
+  --wallpaper: url('wallpaper.jpg');
+  --bg-blur: 18px;
+  --circle-size: 88px;
+  --safe-bottom: env(safe-area-inset-bottom);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background-color: black;
+}
+
+body {
+  background-image: var(--wallpaper);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#lockscreen {
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(var(--bg-blur));
+  -webkit-backdrop-filter: blur(var(--bg-blur));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.prompt {
+  margin-top: 110px; /* Adjusted to match first screenshot after removing top bar */
+  text-align: center;
+}
+
+.prompt .title {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  margin-bottom: 18px;
+}
+
+.dots {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.4);
+  background: transparent;
+  transition: background .14s ease, transform .14s;
+}
+
+.dot.filled {
+  background: white;
+  border-color: white;
+  transform: scale(1.08);
+}
+
+.keypad {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.key {
+  height: var(--circle-size);
+  width: var(--circle-size);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+}
+
+.num {
+  font-size: 34px;
+  font-weight: 600;
+}
+
+.letters {
+  font-size: 11px;
+  opacity: 0.9;
+  margin-top: 4px;
+}
+
+.link {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  align-self: center;
+}
+
+.cancel {
+  font-size: 18px;
+}
