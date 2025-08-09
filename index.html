@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>iPhone Lock — Passcode</title>
+
+  <!-- Link to external CSS + PWA manifest -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+  <div class="lockscreen">
+    <!-- wallpaper is set in CSS (background-image: url('wallpaper.jpg')) -->
+
+    <!-- Prompt text (no time/date) -->
+    <div class="prompt">Swipe up for Face ID or<br>Enter Passcode</div>
+
+    <!-- Passcode dots -->
+    <div class="dots" id="dots">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+
+    <!-- Keypad -->
+    <div class="keypad" id="keypad" role="group" aria-label="Passcode keypad">
+      <button class="key" data-num="1">1</button>
+      <button class="key" data-num="2">2</button>
+      <button class="key" data-num="3">3</button>
+
+      <button class="key" data-num="4">4</button>
+      <button class="key" data-num="5">5</button>
+      <button class="key" data-num="6">6</button>
+
+      <button class="key" data-num="7">7</button>
+      <button class="key" data-num="8">8</button>
+      <button class="key" data-num="9">9</button>
+
+      <div class="key empty" aria-hidden="true"></div>
+      <button class="key" data-num="0">0</button>
+      <button class="key" data-action="back">⌫</button>
+    </div>
+
+    <!-- Bottom actions -->
+    <div class="bottom-actions">
+      <button class="action" id="emergency">Emergency</button>
+      <button class="action" id="cancel">Cancel</button>
+    </div>
+  </div>
+
+  <script src="app.js" defer></script>
+  <script>
+    // auto-register service worker (optional; safe if file not present)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js').catch(()=>{});
+    }
+  </script>
+</body>
+</html>
