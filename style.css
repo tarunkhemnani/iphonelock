@@ -1,0 +1,203 @@
+:root{
+  --bg-color: #000;
+  --frost: rgba(255,255,255,0.12);
+  --glass-border: rgba(255,255,255,0.08);
+  --accent: rgba(255,255,255,0.95);
+  --muted: rgba(255,255,255,0.75);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+}
+
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  margin:0;
+  background:var(--bg-color);
+  color:var(--accent);
+  -webkit-font-smoothing:antialiased;
+  -webkit-text-size-adjust:100%;
+  touch-action: manipulation;
+}
+
+/* Full-bleed wallpaper */
+#wallpaper{
+  position:fixed;
+  inset:0;
+  background-image: url('wallpaper.jpg'); /* replace */
+  background-size:cover;
+  background-position:center;
+  filter: saturate(1.02);
+  z-index:0;
+}
+
+/* blur overlay for depth */
+#wallpaper::after{
+  content:"";
+  position:absolute; inset:0;
+  backdrop-filter: blur(6px) brightness(.9);
+}
+
+/* main ui container */
+#lockscreen{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 14px 28px;
+  z-index:2;
+  pointer-events:auto;
+}
+
+/* status row */
+.status-row{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  color:var(--muted);
+  font-size:14px;
+  margin-top:6px;
+}
+.status-row .carrier{opacity:.95}
+
+/* center time/date */
+.center{
+  text-align:center;
+  margin-top:20vh;
+}
+.time{
+  font-size:72px;
+  line-height:0.9;
+  font-weight:600;
+  color:var(--accent);
+  letter-spacing: -1px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+}
+.date{
+  margin-top:8px;
+  font-size:18px;
+  color:var(--muted);
+}
+
+/* notifications: frosted cards */
+.notifications{
+  width:100%;
+  max-width:540px;
+  margin-top:24px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  padding: 0 12px;
+}
+.notification{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border-radius:14px;
+  padding:12px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.45);
+  backdrop-filter: blur(8px) saturate(1.1);
+  border: 1px solid var(--glass-border);
+}
+.notification .notif-icon{
+  font-size:24px;
+  width:44px; height:44px;
+  background: rgba(255,255,255,0.06);
+  border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+}
+.notif-app{font-weight:600}
+.notif-text{font-size:13px; color:var(--muted)}
+
+/* lock icon */
+.locked{
+  margin-top:8px;
+}
+.lock-icon{
+  font-size:18px;
+  color:var(--muted);
+}
+
+/* passcode panel */
+.passcode-panel{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:18px;
+  width:92%;
+  max-width:520px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.6));
+  border-radius:18px;
+  padding:14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  border:1px solid rgba(255,255,255,0.06);
+  z-index:4;
+  display:none; /* shown via JS */
+  color:var(--accent);
+}
+
+/* header & dots */
+.passcode-header{ text-align:center; margin-bottom:8px; font-weight:600; color:var(--muted) }
+.pin-dots{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  margin-bottom:12px;
+}
+.dot{
+  width:14px; height:14px;
+  border-radius:50%;
+  border: 1.5px solid rgba(255,255,255,0.28);
+  background:transparent;
+}
+.dot.filled{
+  background:var(--accent);
+  border-color:var(--accent);
+}
+
+/* keypad */
+.keypad{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.key{
+  height:58px;
+  border-radius:12px;
+  border: none;
+  font-size:22px;
+  background: rgba(255,255,255,0.03);
+  color:var(--accent);
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,0.3);
+}
+.key:active{ transform: translateY(1px); }
+.key.empty{ background: transparent; box-shadow:none; }
+
+.pass-actions{ display:flex; justify-content:center; margin-top:8px; }
+.action{
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding:8px 16px;
+  border-radius:10px;
+  color:var(--muted);
+}
+
+/* bottom icons */
+.bottom-icons{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding: 8px 10px;
+  color:var(--muted);
+  font-size:20px;
+}
+
+/* small screens tweak */
+@media (max-width:420px){
+  .time{ font-size:54px }
+  .center{ margin-top:16vh }
+  .passcode-panel{ width:96% }
+}
