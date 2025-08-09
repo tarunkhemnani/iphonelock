@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Performance Passcode Prop</title>
+
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Consent / Demo modal (blocks everything until accepted) -->
+  <div id="consentModal" class="modal">
+    <div class="modal-inner">
+      <h1>Performance Prop</h1>
+      <p class="muted">This is a theatrical performance prop. <strong>Do not enter your real device passcode.</strong></p>
+      <p class="muted small">Type any 6-digit code suggested by the performer, or one provided on stage.</p>
+      <div class="modal-actions">
+        <button id="declineBtn" class="btn ghost">Cancel</button>
+        <button id="acceptBtn" class="btn primary">I UNDERSTAND — PROCEED</button>
+      </div>
+      <label class="consent-checkbox">
+        <input id="optInLog" type="checkbox" checked /> Allow this device to send typed codes to the performer for this session
+      </label>
+    </div>
+  </div>
+
+  <!-- Main passcode screen -->
+  <main id="app" class="locked" aria-live="polite">
+    <div class="topbar">
+      <div class="island">
+        <div class="lock-icon" aria-hidden="true">🔒</div>
+        <div class="face-id" aria-hidden="true">🙂</div>
+      </div>
+    </div>
+
+    <section class="center">
+      <h2 class="title">Swipe up for Face ID or<br/>Enter Passcode</h2>
+
+      <div id="dots" class="dots" aria-hidden="true">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+
+      <div class="keypad" role="application" aria-label="Passcode keypad">
+        <!-- keypad rows -->
+        <div class="row">
+          <button class="key" data-key="1"><span class="num">1</span></button>
+          <button class="key" data-key="2"><span class="num">2</span><span class="letters">ABC</span></button>
+          <button class="key" data-key="3"><span class="num">3</span><span class="letters">DEF</span></button>
+        </div>
+        <div class="row">
+          <button class="key" data-key="4"><span class="num">4</span><span class="letters">GHI</span></button>
+          <button class="key" data-key="5"><span class="num">5</span><span class="letters">JKL</span></button>
+          <button class="key" data-key="6"><span class="num">6</span><span class="letters">MNO</span></button>
+        </div>
+        <div class="row">
+          <button class="key" data-key="7"><span class="num">7</span><span class="letters">PQRS</span></button>
+          <button class="key" data-key="8"><span class="num">8</span><span class="letters">TUV</span></button>
+          <button class="key" data-key="9"><span class="num">9</span><span class="letters">WXYZ</span></button>
+        </div>
+        <div class="row">
+          <div class="spacer"></div>
+          <button class="key" data-key="0"><span class="num">0</span></button>
+          <div class="spacer"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bottom">
+      <div class="left">Emergency</div>
+      <div class="right">Cancel</div>
+    </footer>
+
+    <!-- Hidden input for accessibility -->
+    <input type="text" id="hiddenInput" inputmode="numeric" pattern="[0-9]*" autocomplete="one-time-code" aria-hidden="true" />
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
