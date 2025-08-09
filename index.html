@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>iPhone Passcode</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <div id="wallpaper" aria-hidden="true"></div>
+
+  <main id="screen" role="application" aria-label="iPhone lock screen">
+    <div class="topbar">
+      <div class="lock-icon">🔒</div>
+      <div class="face-hint"></div>
+    </div>
+
+    <div class="center-block">
+      <div class="headline">Swipe up for Face ID or<br>Enter Passcode</div>
+
+      <div class="pin-dots" id="pinDots" aria-hidden="false">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+    </div>
+
+    <section class="keypad" id="keypad" role="group" aria-label="Passcode keypad">
+      <!-- row 1 -->
+      <button class="key" data-key="1"><div class="num">1</div><div class="letters"></div></button>
+      <button class="key" data-key="2"><div class="num">2</div><div class="letters">ABC</div></button>
+      <button class="key" data-key="3"><div class="num">3</div><div class="letters">DEF</div></button>
+
+      <!-- row 2 -->
+      <button class="key" data-key="4"><div class="num">4</div><div class="letters">GHI</div></button>
+      <button class="key" data-key="5"><div class="num">5</div><div class="letters">JKL</div></button>
+      <button class="key" data-key="6"><div class="num">6</div><div class="letters">MNO</div></button>
+
+      <!-- row 3 -->
+      <button class="key" data-key="7"><div class="num">7</div><div class="letters">PQRS</div></button>
+      <button class="key" data-key="8"><div class="num">8</div><div class="letters">TUV</div></button>
+      <button class="key" data-key="9"><div class="num">9</div><div class="letters">WXYZ</div></button>
+
+      <!-- row 4 -->
+      <div class="spacer"></div>
+      <button class="key" data-key="0"><div class="num">0</div><div class="letters"></div></button>
+      <button class="key back" id="keyBack" aria-label="Backspace">⌫</button>
+    </section>
+
+    <div class="bottom-row">
+      <button class="link small" id="emergency">Emergency</button>
+      <div class="home-indicator" aria-hidden="true"></div>
+      <button class="link small" id="cancel">Cancel</button>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
