@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>iPhone Lock — Passcode</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="lockscreen" role="application" aria-label="iPhone Lock Screen">
+    <div class="prompt">Swipe up for Face ID or<br>Enter Passcode</div>
+
+    <div class="dots" id="dots" aria-hidden="true">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+
+    <div class="keypad" role="group" aria-label="Passcode keypad">
+      <div class="row">
+        <button class="key" data-number="1"><span class="num">1</span></button>
+        <button class="key" data-number="2"><span class="num">2</span><span class="letters">ABC</span></button>
+        <button class="key" data-number="3"><span class="num">3</span><span class="letters">DEF</span></button>
+      </div>
+      <div class="row">
+        <button class="key" data-number="4"><span class="num">4</span><span class="letters">GHI</span></button>
+        <button class="key" data-number="5"><span class="num">5</span><span class="letters">JKL</span></button>
+        <button class="key" data-number="6"><span class="num">6</span><span class="letters">MNO</span></button>
+      </div>
+      <div class="row">
+        <button class="key" data-number="7"><span class="num">7</span><span class="letters">PQRS</span></button>
+        <button class="key" data-number="8"><span class="num">8</span><span class="letters">TUV</span></button>
+        <button class="key" data-number="9"><span class="num">9</span><span class="letters">WXYZ</span></button>
+      </div>
+      <div class="row">
+        <div class="spacer"></div>
+        <button class="key" data-number="0"><span class="num">0</span></button>
+        <button class="key key-back" data-action="back"><span class="num">⌫</span></button>
+      </div>
+    </div>
+
+    <div class="bottom-links" role="contentinfo">
+      <button class="link" id="emergency">Emergency</button>
+      <button class="link" id="cancelBtn">Cancel</button>
+    </div>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
